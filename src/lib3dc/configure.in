@@ -1,0 +1,57 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.71])
+AC_INIT([lib3dc],[0.1],[william.l.baker2@gmail.com])
+AC_PREFIX_DEFAULT(/usr)
+AC_CONFIG_AUX_DIR(config)
+AC_CANONICAL_TARGET()
+
+AM_INIT_AUTOMAKE()
+AC_CONFIG_SRCDIR([lib3dc.c])
+AC_CONFIG_HEADERS([config.h])
+
+# Checks for programs.
+AC_PROG_CC
+LT_INIT
+
+case $host_os in
+	*linux*) 
+	  AC_DEFINE([OSTYPE_LINUX], [1],[Target OS is Linux])
+	  ;;
+	*darwin*)
+	  AC_DEFINE([OSTYPE_DARWIN], [1],[Target OS is Darwin])
+	  ;;
+esac
+
+# Checks for libraries.
+# AC_CHECK_LIB([libusb-1.0], [main], ,AC_MSG_ERROR(["libusb-1.0 not found. please install it"]))
+PKG_CHECK_MODULES([LIBUSB], [libusb-1.0 >= 1.0])
+
+
+dnl Some versions of libusb do not honour timeout and block. Suns' version is one of them.
+if test "x$libusb_blocks" == "xtrue"; then
+      AC_DEFINE([LIBUSB_BLOCKS], [1],[Define if libusb implementation blocks on read or write])
+fi
+
+# Checks for header files.
+m4_warn([obsolete],
+[The preprocessor macro `STDC_HEADERS' is obsolete.
+  Except in unusual embedded environments, you can safely include all
+  ISO C90 headers unconditionally.])dnl
+# Autoupdate added the next two lines to ensure that your configure
+# script's behavior did not change.  They are probably safe to remove.
+AC_CHECK_INCLUDES_DEFAULT
+AC_PROG_EGREP
+
+AC_CHECK_HEADERS([string.h])
+AC_CHECK_HEADERS([libusb.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+
+# Checks for library functions.
+AC_CHECK_FUNCS([memset])
+
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT
