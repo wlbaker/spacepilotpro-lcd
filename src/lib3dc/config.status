@@ -430,7 +430,7 @@ Copyright (C) 2021 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/bbaker/git/github/spacepilotpro-lcd/src/lib3dc'
+ac_pwd='/home/joe/git/spacepilotpro-lcd/src/lib3dc'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/usr/bin/mkdir -p'
@@ -542,12 +542,12 @@ AMDEP_TRUE="" MAKE="make"
 sed_quote_subst='s/\(["`$\\]\)/\\\1/g'
 double_quote_subst='s/\(["`\\]\)/\\\1/g'
 delay_variable_subst='s/\\\\\\\\\\\$/\\\\\\$/g'
-macro_version='2.4.7'
+macro_version='2.4.7-dirty'
 macro_revision='2.4.7'
 enable_shared='yes'
 enable_static='yes'
 pic_mode='default'
-enable_fast_install='needless'
+enable_fast_install='yes'
 shared_archive_member_spec=''
 SHELL='/bin/sh'
 ECHO='printf %s\n'
@@ -612,7 +612,7 @@ MAGIC_CMD='file'
 lt_prog_compiler_no_builtin_flag=' -fno-builtin'
 lt_prog_compiler_pic=' -fPIC -DPIC'
 lt_prog_compiler_wl='-Wl,'
-lt_prog_compiler_static=''
+lt_prog_compiler_static='-static'
 lt_cv_prog_compiler_c_o='yes'
 need_locks='no'
 MANIFEST_TOOL=':'
@@ -663,7 +663,7 @@ need_version='no'
 version_type='linux'
 runpath_var='LD_RUN_PATH'
 shlibpath_var='LD_LIBRARY_PATH'
-shlibpath_overrides_runpath='yes'
+shlibpath_overrides_runpath='no'
 libname_spec='lib$name'
 library_names_spec='$libname$release$shared_ext$versuffix $libname$release$shared_ext$major $libname$shared_ext'
 soname_spec='$libname$release$shared_ext$major'
@@ -673,8 +673,8 @@ postuninstall_cmds=''
 finish_cmds='PATH="\$PATH:/sbin" ldconfig -n $libdir'
 finish_eval=''
 hardcode_into_libs='yes'
-sys_lib_search_path_spec='/usr/lib/gcc/x86_64-redhat-linux/12 /usr/lib64 /lib64 /usr/lib /lib '
-configure_time_dlsearch_path='/lib64 /usr/lib64 /lib /usr/lib /usr/lib64/R/lib /home/bbaker/Documents/ndof-utils/g15tools/libg15/.libs /usr/lib64/iscsi /usr/lib64/llvm13/lib /usr/lib64/pipewire-0.3/jack/ '
+sys_lib_search_path_spec='/usr/lib/gcc/x86_64-pc-linux-gnu/12.1.1 /usr/lib /lib '
+configure_time_dlsearch_path='/lib /usr/lib /usr/lib/libfakeroot /usr/lib32 '
 configure_time_lt_sys_library_path=''
 hardcode_action='immediate'
 enable_dlopen='unknown'
@@ -875,12 +875,12 @@ S["mkdir_p"]="$(MKDIR_P)"
 S["MKDIR_P"]="/usr/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]="strip"
-S["install_sh"]="${SHELL} /home/bbaker/git/github/spacepilotpro-lcd/src/lib3dc/config/install-sh"
-S["MAKEINFO"]="${SHELL} '/home/bbaker/git/github/spacepilotpro-lcd/src/lib3dc/config/missing' makeinfo"
-S["AUTOHEADER"]="${SHELL} '/home/bbaker/git/github/spacepilotpro-lcd/src/lib3dc/config/missing' autoheader"
-S["AUTOMAKE"]="${SHELL} '/home/bbaker/git/github/spacepilotpro-lcd/src/lib3dc/config/missing' automake-1.16"
-S["AUTOCONF"]="${SHELL} '/home/bbaker/git/github/spacepilotpro-lcd/src/lib3dc/config/missing' autoconf"
-S["ACLOCAL"]="${SHELL} '/home/bbaker/git/github/spacepilotpro-lcd/src/lib3dc/config/missing' aclocal-1.16"
+S["install_sh"]="${SHELL} /home/joe/git/spacepilotpro-lcd/src/lib3dc/config/install-sh"
+S["MAKEINFO"]="${SHELL} '/home/joe/git/spacepilotpro-lcd/src/lib3dc/config/missing' makeinfo"
+S["AUTOHEADER"]="${SHELL} '/home/joe/git/spacepilotpro-lcd/src/lib3dc/config/missing' autoheader"
+S["AUTOMAKE"]="${SHELL} '/home/joe/git/spacepilotpro-lcd/src/lib3dc/config/missing' automake-1.16"
+S["AUTOCONF"]="${SHELL} '/home/joe/git/spacepilotpro-lcd/src/lib3dc/config/missing' autoconf"
+S["ACLOCAL"]="${SHELL} '/home/joe/git/spacepilotpro-lcd/src/lib3dc/config/missing' aclocal-1.16"
 S["VERSION"]="0.1"
 S["PACKAGE"]="lib3dc"
 S["CYGPATH_W"]="echo"
@@ -910,7 +910,7 @@ S["ECHO_C"]=""
 S["DEFS"]="-DHAVE_CONFIG_H"
 S["mandir"]="${datarootdir}/man"
 S["localedir"]="${datarootdir}/locale"
-S["libdir"]="${exec_prefix}/lib64"
+S["libdir"]="${exec_prefix}/lib"
 S["psdir"]="${docdir}"
 S["pdfdir"]="${docdir}"
 S["dvidir"]="${docdir}"
@@ -920,9 +920,9 @@ S["docdir"]="${datarootdir}/doc/${PACKAGE_TARNAME}"
 S["oldincludedir"]="/usr/include"
 S["includedir"]="${prefix}/include"
 S["runstatedir"]="${localstatedir}/run"
-S["localstatedir"]="/var"
-S["sharedstatedir"]="/var"
-S["sysconfdir"]="/etc"
+S["localstatedir"]="${prefix}/var"
+S["sharedstatedir"]="${prefix}/com"
+S["sysconfdir"]="${prefix}/etc"
 S["datadir"]="${datarootdir}"
 S["datarootdir"]="${prefix}/share"
 S["libexecdir"]="${exec_prefix}/libexec"
@@ -1438,7 +1438,6 @@ See \`config.log' for more details" "$LINENO" 5; }
     cat <<_LT_EOF >> "$cfgfile"
 #! $SHELL
 # Generated automatically by $as_me ($PACKAGE) $VERSION
-# Libtool was configured on host `(hostname || uname -n) 2>/dev/null | sed 1q`:
 # NOTE: Changes made to this file will be lost: look at ltmain.sh.
 
 # Provide generalized library-building support services.

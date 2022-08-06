@@ -1,6 +1,5 @@
 #! /bin/sh
 # Generated automatically by config.status (lib3dc) 0.1
-# Libtool was configured on host fedora:
 # NOTE: Changes made to this file will be lost: look at ltmain.sh.
 
 # Provide generalized library-building support services.
@@ -38,7 +37,7 @@ available_tags=''
 # ### BEGIN LIBTOOL CONFIG
 
 # Which release of libtool.m4 was used?
-macro_version=2.4.7
+macro_version=2.4.7-dirty
 macro_revision=2.4.7
 
 # Whether or not to build shared libraries.
@@ -51,7 +50,7 @@ build_old_libs=yes
 pic_mode=default
 
 # Whether or not to optimize for fast installation.
-fast_install=needless
+fast_install=yes
 
 # Shared archive member basename,for filename based shared library versioning on AIX.
 shared_archive_member_spec=
@@ -256,7 +255,7 @@ runpath_var=LD_RUN_PATH
 shlibpath_var=LD_LIBRARY_PATH
 
 # Is shlibpath searched before the hard-coded library search path?
-shlibpath_overrides_runpath=yes
+shlibpath_overrides_runpath=no
 
 # Format of library name prefix.
 libname_spec="lib\$name"
@@ -288,10 +287,10 @@ finish_eval=""
 hardcode_into_libs=yes
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="/usr/lib/gcc/x86_64-redhat-linux/12 /usr/lib64 /lib64 /usr/lib /lib "
+sys_lib_search_path_spec="/usr/lib/gcc/x86_64-pc-linux-gnu/12.1.1 /usr/lib /lib "
 
 # Detected run-time system search path for libraries.
-sys_lib_dlsearch_path_spec="/lib64 /usr/lib64 /lib /usr/lib /usr/lib64/R/lib /home/bbaker/Documents/ndof-utils/g15tools/libg15/.libs /usr/lib64/iscsi /usr/lib64/llvm13/lib /usr/lib64/pipewire-0.3/jack/ "
+sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/lib/libfakeroot /usr/lib32 "
 
 # Explicit LT_SYS_LIBRARY_PATH set during ./configure time.
 configure_time_lt_sys_library_path=""
@@ -336,7 +335,7 @@ pic_flag=" -fPIC -DPIC"
 wl="-Wl,"
 
 # Compiler flag to prevent dynamic linking.
-link_static_flag=""
+link_static_flag="-static"
 
 # Does compiler simultaneously support -c and -o options?
 compiler_c_o="yes"
