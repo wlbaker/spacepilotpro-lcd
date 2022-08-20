@@ -12845,6 +12845,7 @@ printf "%s\n" "yes" >&6; }
 
 fi
 
+
 if test "x$libusb_blocks" == "xtrue"; then
 
 printf "%s\n" "#define LIBUSB_BLOCKS 1" >>confdefs.h
